@@ -1,34 +1,39 @@
-# CLAUDE.md
+# memo-app
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## 概要
+社内メモ管理アプリ。メモの追加・編集・削除・カテゴリ分類ができる。
+データはlocalStorageのキー `memo-app:memos` に保存される。
+カテゴリは「仕事」「個人」「アイデア」の3種類（`App.jsx` の `CATEGORIES`）。
 
-## Project overview
+## 技術スタック
+- React 19（UIライブラリ）
+- JavaScript
+- Vite 8（ビルドツール）
+- oxlint（静的解析。設定は `.oxlintrc.json`）
+- localStorage（データ永続化）
 
-`memo-app` is a minimal single-page memo (note-taking) app built with React 19 + Vite. There is no backend — all data lives in `localStorage` under the key `memo-app:memos`.
+## ディレクトリ構造
+src/
+├── App.jsx        # アプリ本体（状態管理・UIを単一コンポーネントで実装）
+├── App.css        # App用スタイル
+├── main.jsx       # エントリーポイント
+└── index.css      # グローバルスタイル
 
-## Commands
+## 開発コマンド
+- `npm run dev` - 開発サーバー起動
+- `npm run build` - 本番ビルド
+- `npm run preview` - ビルド結果のプレビュー
+- `npm run lint` - oxlintチェック
 
-```bash
-npm install      # install dependencies
-npm run dev       # start Vite dev server with HMR
-npm run build     # production build to dist/
-npm run preview   # preview the production build locally
-npm run lint       # lint with oxlint
-```
+テストは未導入。
 
-There is no test suite configured in this project.
+## コーディング規約
+- コンポーネントは関数コンポーネントで記述してください
+- 変数名・関数名はキャメルケースで書いてください
+- CSSクラス名にはハイフン区切りを使用してください
+- コミットメッセージは日本語で書いてください
 
-## Architecture
-
-The entire app logic lives in `src/App.jsx` as a single component — there is no router, no component tree, and no state management library:
-
-- Memo state is a single array of `{ id, text, createdAt }` objects, initialized from `localStorage` via `loadMemos()` and persisted back on every change via a `useEffect` keyed on the `memos` state.
-- `crypto.randomUUID()` generates memo IDs; `Date.now()` stamps creation time, formatted for display with `toLocaleString('ja-JP')`.
-- UI text (labels, placeholders, empty state) is in Japanese.
-- Styling is plain CSS in `src/App.css` / `src/index.css` — no CSS framework or CSS-in-JS.
-
-`src/main.jsx` mounts `<App />` into `#root` inside `<StrictMode>`; `index.html` is the Vite entry point.
-
-## Linting
-
-oxlint is configured (`.oxlintrc.json`) with the `react` and `oxc` plugins, enforcing `react/rules-of-hooks` as an error.
+## 禁止事項
+- console.logを本番コードに残さないでください
+- 既存のテストを削除しないでください
+- グローバル変数を使用しないでください
