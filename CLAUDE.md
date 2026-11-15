@@ -2,19 +2,20 @@
 
 ## 概要
 社内メモ管理アプリ。メモの追加・編集・削除・カテゴリ分類ができる。
-データはlocalStorageに保存される。
+データはlocalStorageのキー `memo-app:memos` に保存される。
+カテゴリは「仕事」「個人」「アイデア」の3種類（`App.jsx` の `CATEGORIES`）。
 
 ## 技術スタック
 - React 19（UIライブラリ）
 - JavaScript
-- Vite 7（ビルドツール）
-- ESLint 9（静的解析）
+- Vite 8（ビルドツール）
+- oxlint（静的解析。設定は `.oxlintrc.json`）
 - localStorage（データ永続化）
 
 ## ディレクトリ構造
 src/
-├── components/    # Reactコンポーネント
-├── App.jsx        # メインのアプリケーションコンポーネント
+├── App.jsx        # アプリ本体（状態管理・UIを単一コンポーネントで実装）
+├── App.css        # App用スタイル
 ├── main.jsx       # エントリーポイント
 └── index.css      # グローバルスタイル
 
@@ -22,7 +23,9 @@ src/
 - `npm run dev` - 開発サーバー起動
 - `npm run build` - 本番ビルド
 - `npm run preview` - ビルド結果のプレビュー
-- `npm run lint` - ESLintチェック
+- `npm run lint` - oxlintチェック
+
+テストは未導入。
 
 ## コーディング規約
 - コンポーネントは関数コンポーネントで記述してください
