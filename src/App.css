@@ -1,0 +1,154 @@
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.memo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.memo-form textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.memo-form button {
+  align-self: flex-end;
+  padding: 6px 16px;
+}
+
+.category-select {
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.category-filter button {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+}
+
+.category-filter button.active {
+  background: var(--text-h);
+  color: var(--bg);
+  border-color: var(--text-h);
+}
+
+.memo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.memo-item {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  text-align: left;
+}
+
+.memo-item p {
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.category-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  background: var(--border);
+}
+
+.category-tag[data-category='仕事'] {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.category-tag[data-category='個人'] {
+  background: #dcfce7;
+  color: #14532d;
+}
+
+.category-tag[data-category='アイデア'] {
+  background: #fef3c7;
+  color: #78350f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .category-tag[data-category='仕事'] {
+    background: #1e3a8a;
+    color: #dbeafe;
+  }
+
+  .category-tag[data-category='個人'] {
+    background: #14532d;
+    color: #dcfce7;
+  }
+
+  .category-tag[data-category='アイデア'] {
+    background: #78350f;
+    color: #fef3c7;
+  }
+}
+
+.memo-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.memo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.memo-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.memo-edit-form textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.empty {
+  color: var(--text);
+  text-align: center;
+}
